@@ -18,11 +18,34 @@ public class Utilities {
      * @return String that users have just input.
      */
     public static String inputAString(String msg) {
-        String str = null;
+        String str = "";
         while (loopMore) {
             try {
                 System.out.print(msg);
                 str = sc.nextLine().trim().replaceAll("\\s+", " ");
+                return str;
+            } catch (Exception e) {
+                System.out.println(err);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * This method allow users to input a String from keyboard.
+     * @param msg The announcement when users input data.
+     * @return String that users have just input.
+     */
+    public static String inputAString(String msg, int minLength, int maxLength) {
+        String str = "";
+        while (loopMore) {
+            try {
+                System.out.print(msg);
+                str = sc.nextLine().trim().replaceAll("\\s+", " ");
+
+                if(!str.isEmpty() && str.length() < minLength && str.length() > maxLength)
+                    throw new StringIndexOutOfBoundsException("Name's length must be more than 3 and less than 100!");
+
                 return str;
             } catch (Exception e) {
                 System.out.println(err);
@@ -113,9 +136,9 @@ public class Utilities {
             try {
                 System.out.print(msg);
                 String id = sc.nextLine().trim();
-                check = id.matches(format);
+                check = id.matches(format) || id.isEmpty();
 
-                if (!check || id.isEmpty()) {
+                if (!check) {
                     throw new Exception();
                 }
 

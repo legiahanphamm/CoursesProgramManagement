@@ -1,10 +1,9 @@
 package management;
 
-import model.CoursesProgramModel;
+import dao.DaoImpl;
 
 public class Main {
     public static void main(String[] args) {
-        CoursesProgramModel cpm = new CoursesProgramModel("src/data.dat");
-        cpm.t
+        DaoImpl cpm = new DaoImpl();
     }
 }
